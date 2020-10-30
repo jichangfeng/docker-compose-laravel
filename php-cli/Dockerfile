@@ -26,6 +26,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd
 
 
+RUN pecl install xdebug
+
+
 # bravo
 RUN mkdir -p /opt/bravo \
     && tar -zxf /opt/bravo_0.4.0.tar.gz -C /opt/bravo \
