@@ -21,6 +21,31 @@
  - laravel 6.x
  - node 15.0.1
 
+**使用 Docker 导出/导入镜像：**
+```
+# 导出
+docker save docker-compose-laravel_mysql:latest -o docker-compose-laravel_mysql-latest.tar
+docker save docker-compose-laravel_postgres:latest -o docker-compose-laravel_postgres-latest.tar
+docker save docker-compose-laravel_redis:latest -o docker-compose-laravel_redis-latest.tar
+docker save docker-compose-laravel_php-fpm:latest -o docker-compose-laravel_php-fpm-latest.tar
+docker save docker-compose-laravel_php-cli:latest -o docker-compose-laravel_php-cli-latest.tar
+docker save docker-compose-laravel_nginx:latest -o docker-compose-laravel_nginx-latest.tar
+docker save docker-compose-laravel_composer:latest -o docker-compose-laravel_composer-latest.tar
+docker save docker-compose-laravel_laravel:latest -o docker-compose-laravel_laravel-latest.tar
+docker save docker-compose-laravel_node:latest -o docker-compose-laravel_node-latest.tar
+#
+# 导入
+docker load -i docker-compose-laravel_mysql-latest.tar
+docker load -i docker-compose-laravel_postgres-latest.tar
+docker load -i docker-compose-laravel_redis-latest.tar
+docker load -i docker-compose-laravel_php-fpm-latest.tar
+docker load -i docker-compose-laravel_php-cli-latest.tar
+docker load -i docker-compose-laravel_nginx-latest.tar
+docker load -i docker-compose-laravel_composer-latest.tar
+docker load -i docker-compose-laravel_laravel-latest.tar
+docker load -i docker-compose-laravel_node-latest.tar
+```
+
 **使用 Composer 命令：**
  - 语法：
 ```
