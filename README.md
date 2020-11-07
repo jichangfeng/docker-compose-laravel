@@ -74,8 +74,16 @@ docker-compose run --rm laravel command [options] [arguments]
 ```
  - 示例：
 ```
-# 创建一个名为 blog 的项目，并已安装好 Laravel 所有的依赖项
+# 通过 Laravel 安装器创建 Laravel 项目
+#   创建一个名为 blog 的项目，并已安装好 Laravel 所有的依赖项
 docker-compose run --rm laravel new blog
+#
+# 也可以通过 Composer 命令创建 Laravel 项目
+#   以下命令生成的 blog 项目与上面一致
+docker-compose run --rm composer -d /var/www/code/laravel create-project --prefer-dist laravel/laravel blog
+#
+# 也可以指定 Laravel 版本
+docker-compose run --rm composer -d /var/www/code/laravel create-project --prefer-dist laravel/laravel blog "6.*"
 #
 # Web 服务器配置
 #     复制文件 conf\nginx\conf.d\default.conf 为 conf\nginx\conf.d\blog.conf
@@ -83,7 +91,7 @@ docker-compose run --rm laravel new blog
 #     修改 blog.conf 文件内容“root "/var/www/code/default";” 为“root "/var/www/code/laravel/blog/public";”
 #     修改 blog.conf 文件内容“www.default.access.log";”为“www.blog.access.log”
 #     修改 blog.conf 文件内容“www.default.error.log";”为“www.blog.error.log”
-#     修改 hosts 增加“192.168.99.100 blog.www”（格式：Docker容器可访问IP 域名）
+#     修改 hosts 增加“127.0.0.1 blog.www”（格式：Docker容器可访问IP 域名）
 #     重启 docker 后即可访问项目网址“http://blog.www:8000”
 ```
 
