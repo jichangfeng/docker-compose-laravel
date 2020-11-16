@@ -34,7 +34,7 @@ services:
     build:
       context: ./redis
     volumes:
-      - cache-data:/data
+      - redis-data:/data
       - ./conf/redis/redis.conf:/usr/local/etc/redis.conf
     command: /usr/local/etc/redis.conf
     restart: always
@@ -124,4 +124,4 @@ services:
 volumes:
   mysql-data: 
   postgres-data: 
-  cache-data: 
+  redis-data: 
