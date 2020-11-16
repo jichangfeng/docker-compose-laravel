@@ -43,6 +43,15 @@ services:
     ports:
       - "63790:6379"
 
+  beanstalkd:
+    build:
+      context: ./beanstalkd
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "11300:11300"
+
   php-fpm:
     build:
       context: ./php-fpm

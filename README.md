@@ -12,6 +12,8 @@
   >- 密码：nosmoking
  - redis 5.0.9
   >- 端口：63790 -> 转发到 6379
+ - beanstalkd 1.10
+  >- 端口：11300 -> 转发到 11300
  - php-fpm 7.3.23
  - php-cli 7.3.23
  - nginx 1.18.0
@@ -27,6 +29,7 @@
 docker save docker-compose-laravel_mysql:latest -o docker-compose-laravel_mysql-latest.tar
 docker save docker-compose-laravel_postgres:latest -o docker-compose-laravel_postgres-latest.tar
 docker save docker-compose-laravel_redis:latest -o docker-compose-laravel_redis-latest.tar
+docker save docker-compose-laravel_beanstalkd:latest -o docker-compose-laravel_beanstalkd-latest.tar
 docker save docker-compose-laravel_php-fpm:latest -o docker-compose-laravel_php-fpm-latest.tar
 docker save docker-compose-laravel_php-cli:latest -o docker-compose-laravel_php-cli-latest.tar
 docker save docker-compose-laravel_nginx:latest -o docker-compose-laravel_nginx-latest.tar
@@ -38,6 +41,7 @@ docker save docker-compose-laravel_node:latest -o docker-compose-laravel_node-la
 docker load -i docker-compose-laravel_mysql-latest.tar
 docker load -i docker-compose-laravel_postgres-latest.tar
 docker load -i docker-compose-laravel_redis-latest.tar
+docker load -i docker-compose-laravel_beanstalkd-latest.tar
 docker load -i docker-compose-laravel_php-fpm-latest.tar
 docker load -i docker-compose-laravel_php-cli-latest.tar
 docker load -i docker-compose-laravel_nginx-latest.tar
