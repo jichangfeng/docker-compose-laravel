@@ -20,7 +20,6 @@
   >- 端口：8000 -> 转发到 80
   >- 端口：44300 -> 转发到 443
  - composer latest-stable
- - laravel 6.x
  - node 15.0.1
 
 **使用 Docker 导出/导入镜像：**
@@ -34,7 +33,6 @@ docker save docker-compose-laravel_php-fpm:latest -o docker-compose-laravel_php-
 docker save docker-compose-laravel_php-cli:latest -o docker-compose-laravel_php-cli-latest.tar
 docker save docker-compose-laravel_nginx:latest -o docker-compose-laravel_nginx-latest.tar
 docker save docker-compose-laravel_composer:latest -o docker-compose-laravel_composer-latest.tar
-docker save docker-compose-laravel_laravel:latest -o docker-compose-laravel_laravel-latest.tar
 docker save docker-compose-laravel_node:latest -o docker-compose-laravel_node-latest.tar
 #
 # 导入
@@ -46,7 +44,6 @@ docker load -i docker-compose-laravel_php-fpm-latest.tar
 docker load -i docker-compose-laravel_php-cli-latest.tar
 docker load -i docker-compose-laravel_nginx-latest.tar
 docker load -i docker-compose-laravel_composer-latest.tar
-docker load -i docker-compose-laravel_laravel-latest.tar
 docker load -i docker-compose-laravel_node-latest.tar
 ```
 
@@ -65,29 +62,11 @@ docker-compose run --rm composer install -d /var/www/code/laravel/blog
 #
 # 更新项目依赖
 docker-compose run --rm composer update -d /var/www/code/laravel/blog
-```
-
-**使用 Laravel 安装器：**
- - 首先，通过使用 Composer 安装 Laravel 安装器：
-```
-docker-compose run --rm composer require laravel/installer -d /var/www/code/laravel
-```
- - 语法：
-```
-docker-compose run --rm laravel command [options] [arguments]
-```
- - 示例：
-```
-# 通过 Laravel 安装器创建 Laravel 项目
-#   创建一个名为 blog 的项目，并已安装好 Laravel 所有的依赖项
-docker-compose run --rm laravel new blog
 #
-# 也可以通过 Composer 命令创建 Laravel 项目
-#   以下命令生成的 blog 项目与上面一致
-docker-compose run --rm composer -d /var/www/code/laravel create-project --prefer-dist laravel/laravel blog
-#
-# 也可以指定 Laravel 版本
-docker-compose run --rm composer -d /var/www/code/laravel create-project --prefer-dist laravel/laravel blog "6.*"
+# 创建 Laravel 项目
+docker-compose run --rm composer create-project -d /var/www/code/laravel --prefer-dist laravel/laravel blog
+# 创建 Laravel 项目 - 也可以指定 Laravel 版本
+docker-compose run --rm composer create-project -d /var/www/code/laravel --prefer-dist laravel/laravel blog "6.*"
 #
 # Web 服务器配置
 #     复制文件 conf\nginx\conf.d\default.conf 为 conf\nginx\conf.d\blog.conf

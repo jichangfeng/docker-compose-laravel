@@ -102,17 +102,6 @@ services:
     environment:
       - TZ=Asia/Shanghai
 
-  laravel:
-    build:
-      context: ./php-cli
-    volumes:
-      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
-      - ./code/:/var/www/code
-    working_dir: /var/www/code/laravel
-    entrypoint: ['/var/www/code/laravel/vendor/bin/laravel']
-    environment:
-      - TZ=Asia/Shanghai
-
   node:
     build:
       context: ./node
