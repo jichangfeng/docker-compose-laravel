@@ -12,6 +12,11 @@
   >- 密码：nosmoking
  - redis 5.0.9
   >- 端口：63790 -> 转发到 6379
+ - phpredisadmin
+  >- 用PHP编写的用于管理Redis数据库的简单Web界面
+  >- 端口：6380 -> 转发到 6380
+  >- 用户名：admin
+  >- 密码：nosmoking
  - beanstalkd 1.10
   >- 端口：11300 -> 转发到 11300
  - beanstalkd-console
@@ -33,6 +38,7 @@
 docker save docker-compose-laravel_mysql:latest -o docker-compose-laravel_mysql-latest.tar
 docker save docker-compose-laravel_postgres:latest -o docker-compose-laravel_postgres-latest.tar
 docker save docker-compose-laravel_redis:latest -o docker-compose-laravel_redis-latest.tar
+docker save docker-compose-laravel_phpredisadmin:latest -o docker-compose-laravel_phpredisadmin-latest.tar
 docker save docker-compose-laravel_beanstalkd:latest -o docker-compose-laravel_beanstalkd-latest.tar
 docker save docker-compose-laravel_beanstalkd-console:latest -o docker-compose-laravel_beanstalkd-console-latest.tar
 docker save docker-compose-laravel_php-fpm:latest -o docker-compose-laravel_php-fpm-latest.tar
@@ -45,6 +51,7 @@ docker save docker-compose-laravel_node:latest -o docker-compose-laravel_node-la
 docker load -i docker-compose-laravel_mysql-latest.tar
 docker load -i docker-compose-laravel_postgres-latest.tar
 docker load -i docker-compose-laravel_redis-latest.tar
+docker load -i docker-compose-laravel_phpredisadmin-latest.tar
 docker load -i docker-compose-laravel_beanstalkd-latest.tar
 docker load -i docker-compose-laravel_beanstalkd-console-latest.tar
 docker load -i docker-compose-laravel_php-fpm-latest.tar

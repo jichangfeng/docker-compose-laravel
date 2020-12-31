@@ -43,6 +43,21 @@ services:
     ports:
       - "63790:6379"
 
+  phpredisadmin:
+    build:
+      context: ./phpredisadmin
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - ADMIN_USER=admin
+      - ADMIN_PASS=nosmoking
+      - REDIS_1_HOST=redis
+      - REDIS_1_PORT=6379
+    ports:
+      - "6380:6380"
+    depends_on:
+      - redis
+
   beanstalkd:
     build:
       context: ./beanstalkd
