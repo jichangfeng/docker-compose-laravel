@@ -13,14 +13,12 @@
  - redis 5.0.9
   >- 端口：63790 -> 转发到 6379
  - phpredisadmin
-  >- 用PHP编写的用于管理Redis数据库的简单Web界面
   >- 端口：6380 -> 转发到 6380
   >- 用户名：admin
   >- 密码：nosmoking
  - beanstalkd 1.10
   >- 端口：11300 -> 转发到 11300
  - beanstalkd-console
-  >- 用PHP编写的Beanstalk队列服务器的管理控制台
   >- 端口：2080 -> 转发到 2080
   >- 用户名：admin
   >- 密码：nosmoking
@@ -60,6 +58,35 @@ docker load -i docker-compose-laravel_nginx-latest.tar
 docker load -i docker-compose-laravel_composer-latest.tar
 docker load -i docker-compose-laravel_node-latest.tar
 ```
+
+**使用 phpRedisAdmin 管理工具：**
+ - 用PHP编写的用于管理Redis数据库的简单Web界面。
+ - 访问地址：`http://127.0.0.1:6380`（其中 127.0.0.1 为Docker容器可访问IP）
+ - 访问用户名、密码：`admin nosmoking`
+ - 添加Redis数据库：
+```
+ # 修改 docker-compose.yml 文件，在 phpredisadmin 容器服务里设置环境变量，示例如下：
+    environment:
+      - TZ=Asia/Shanghai
+      - ADMIN_USER=admin
+      - ADMIN_PASS=nosmoking
+      - REDIS_1_HOST=redis
+      - REDIS_1_PORT=6379
+      - REDIS_2_NAME=beta
+      - REDIS_2_HOST=beta.redis.com
+      - REDIS_2_PORT=6379
+      - REDIS_2_AUTH=abc123
+  # 修改之后需重新构建，重新启动 phpredisadmin 容器服务，示例如下：
+    docker-compose build phpredisadmin
+    docker-compose rm -f -s phpredisadmin
+    docker-compose up -d phpredisadmin
+```
+
+**使用 beanstalkd-console 管理工具：**
+ - 用PHP编写的Beanstalk队列服务器的管理控制台。
+ - 访问地址：`http://127.0.0.1:2080`（其中 127.0.0.1 为Docker容器可访问IP）
+ - 访问用户名、密码：`admin nosmoking`
+ - 添加Beanstalk队列服务器：登录之后在首页点击`Add server`即可操作添加。
 
 **使用 Composer 命令：**
  - 语法：
