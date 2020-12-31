@@ -52,6 +52,21 @@ services:
     ports:
       - "11300:11300"
 
+  beanstalkd-console:
+    build:
+      context: ./beanstalkd-console
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - AUTH=enable
+      - AUTH_USERNAME=admin
+      - AUTH_PASSWORD=nosmoking
+      - BEANSTALKD_PORT_11300_TCP_ADDR=beanstalkd
+    ports:
+      - "2080:2080"
+    depends_on:
+      - beanstalkd
+
   php-fpm:
     build:
       context: ./php-fpm
