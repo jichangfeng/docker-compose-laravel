@@ -92,6 +92,21 @@ docker load -i docker-compose-laravel_node-latest.tar
  - 访问用户名、密码：`admin nosmoking`
  - 添加Beanstalk队列服务器：登录之后在首页点击`Add server`即可操作添加。
 
+**使用 Gearman-Monitor 监控工具：**
+ - 用PHP编写的 Gearman 服务器的监控工具。
+ - 安装步骤（示例）：
+   ```
+   docker-compose run --rm php-cli bash
+   cd /var/www/code/default
+   git clone https://github.com/yugene/Gearman-Monitor.git
+   cd Gearman-Monitor
+   composer install
+   sed -i "s/127.0.0.1/gearmand/g" _config.php
+   exit
+   ```
+ - 访问地址：`http://127.0.0.1:8000/Gearman-Monitor/index.php`（其中 127.0.0.1 为Docker容器可访问IP）
+ - 添加 Gearman 服务器：将 Gearman 服务器地址添加到 `_config.php` 。
+
 **使用 Composer 命令：**
  - 语法：
 ```
