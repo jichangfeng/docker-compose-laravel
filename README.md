@@ -22,6 +22,8 @@
   >- 端口：2080 -> 转发到 2080
   >- 用户名：admin
   >- 密码：nosmoking
+ - gearmand 1.1.19.1
+  >- 端口：4730 -> 转发到 4730
  - php-fpm 7.3.23
  - php-cli 7.3.23
  - nginx 1.18.0
@@ -39,6 +41,7 @@ docker save docker-compose-laravel_redis:latest -o docker-compose-laravel_redis-
 docker save docker-compose-laravel_phpredisadmin:latest -o docker-compose-laravel_phpredisadmin-latest.tar
 docker save docker-compose-laravel_beanstalkd:latest -o docker-compose-laravel_beanstalkd-latest.tar
 docker save docker-compose-laravel_beanstalkd-console:latest -o docker-compose-laravel_beanstalkd-console-latest.tar
+docker save docker-compose-laravel_gearmand:latest -o docker-compose-laravel_gearmand-latest.tar
 docker save docker-compose-laravel_php-fpm:latest -o docker-compose-laravel_php-fpm-latest.tar
 docker save docker-compose-laravel_php-cli:latest -o docker-compose-laravel_php-cli-latest.tar
 docker save docker-compose-laravel_nginx:latest -o docker-compose-laravel_nginx-latest.tar
@@ -52,6 +55,7 @@ docker load -i docker-compose-laravel_redis-latest.tar
 docker load -i docker-compose-laravel_phpredisadmin-latest.tar
 docker load -i docker-compose-laravel_beanstalkd-latest.tar
 docker load -i docker-compose-laravel_beanstalkd-console-latest.tar
+docker load -i docker-compose-laravel_gearmand-latest.tar
 docker load -i docker-compose-laravel_php-fpm-latest.tar
 docker load -i docker-compose-laravel_php-cli-latest.tar
 docker load -i docker-compose-laravel_nginx-latest.tar

@@ -25,6 +25,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd
 
 
+RUN apt-get install -y libgearman-dev \
+    && pecl install gearman \
+    && docker-php-ext-enable gearman
+
+
 RUN pecl install xdebug
 
 

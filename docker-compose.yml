@@ -82,6 +82,16 @@ services:
     depends_on:
       - beanstalkd
 
+  gearmand:
+    build:
+      context: ./gearmand
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "4730:4730"
+    command: ["--queue-type=redis", "--redis-server=redis", "--redis-port=6379"]
+
   php-fpm:
     build:
       context: ./php-fpm
