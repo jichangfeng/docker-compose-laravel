@@ -36,7 +36,10 @@ services:
     volumes:
       - redis-data:/data
       - ./conf/redis/redis.conf:/usr/local/etc/redis.conf
-    command: /usr/local/etc/redis.conf
+      - ./redis/redis-check-aof.sh:/usr/local/bin/redis-check-aof.sh
+    command: bash -c "chmod +x /usr/local/bin/redis-check-aof.sh
+      && /usr/local/bin/redis-check-aof.sh
+      && /usr/local/bin/redis-server /usr/local/etc/redis.conf"
     restart: always
     environment:
       - TZ=Asia/Shanghai

@@ -1,4 +1,6 @@
 logs/*.log
 
-code/laravel/*
+code/*
+!code/default/index.html
+!code/default/index.php
 !code/laravel/index.html
