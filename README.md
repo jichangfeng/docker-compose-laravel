@@ -30,7 +30,7 @@
   >- 端口：8000 -> 转发到 80
   >- 端口：44300 -> 转发到 443
  - composer latest-stable
- - node 15.0.1
+ - node lts
 
 **使用 Docker 导出/导入镜像：**
 ```
@@ -110,7 +110,13 @@ docker load -i docker-compose-laravel_node-latest.tar
 **使用 Composer 命令：**
  - 语法：
 ```
+# 运行命令后自动删除容器
 docker-compose run --rm composer [options] [--] [<command_name>]
+#
+# 进入容器后再执行命令，退出容器后自动删除容器
+docker-compose run --rm php-cli bash
+composer [options] [--] [<command_name>]
+exit
 ```
  - 示例：
 ```
@@ -141,7 +147,13 @@ docker-compose run --rm composer create-project -d /var/www/code/laravel --prefe
 **使用 Artisan 命令行：**
  - 语法：
 ```
+# 运行命令后自动删除容器
 docker-compose run --rm php-cli php /path/to/artisan <command> [options] [arguments]
+#
+# 进入容器后再执行命令，退出容器后自动删除容器
+docker-compose run --rm php-cli bash
+php /path/to/artisan <command> [options] [arguments]
+exit
 ```
  - 示例：
 ```
@@ -155,7 +167,15 @@ docker-compose run --rm php-cli php /var/www/code/laravel/blog/artisan migrate
 **使用 Node 包管理器命令：**
  - 语法：
 ```
+# 运行命令后自动删除容器
 docker-compose run --rm node npm <command>
 docker-compose run --rm node cnpm [option] <command>
 docker-compose run --rm node yarn [command] [flags]
+#
+# 进入容器后再执行命令，退出容器后自动删除容器
+docker-compose run --rm node bash
+npm <command>
+cnpm [option] <command>
+yarn [command] [flags]
+exit
 ```

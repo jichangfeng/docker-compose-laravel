@@ -1,4 +1,4 @@
-FROM node:15.0.1
+FROM node:lts
 MAINTAINER Changfeng Ji <jichf@qq.com>
 
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+RUN npm install -g cnpm --registry=https://registry.npmmirror.com
