@@ -1,6 +1,28 @@
 # docker-compose-laravel
 用于 laravel 开发的 docker-compose 运行环境
 
+**常用的 Docker 操作命令：**
+```
+# 构建，启动项目中的 全部/部分 服务容器
+docker-compose up -d
+docker-compose up -d nginx php-fpm mysql redis
+# 重启项目中的 全部/部分 服务容器
+docker-compose restart
+docker-compose restart nginx php-fpm mysql redis
+# 停止并移除项目中的 全部/部分 服务容器
+docker-compose rm -f -s
+docker-compose rm -f -s nginx php-fpm mysql redis
+# 列出项目中的服务容器
+docker-compose ps
+# 查看项目中的服务容器内运行的进程
+docker-compose top
+# 进入项目中正在运行的服务容器
+docker-compose exec php-fpm bash
+# 启动并进入项目中的服务容器，--rm 表示退出容器后自动删除容器
+docker-compose run --rm php-cli bash
+......
+```
+
 **提供的 Docker 容器服务：**
  - mysql 5.7.32
   >- 端口：33060 -> 转发到 3306
