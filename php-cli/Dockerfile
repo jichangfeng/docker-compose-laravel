@@ -85,7 +85,8 @@ RUN curl https://mirrors.aliyun.com/composer/composer.phar -o /usr/bin/composer 
 #    php -r "unlink('composer-setup.php');"
 
 COPY entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/entrypoint.sh /
+RUN chmod +x /usr/local/bin/entrypoint.sh && \
+    ln -s /usr/local/bin/entrypoint.sh /
 ENTRYPOINT ["entrypoint.sh"]
 
 CMD ["php"]
