@@ -10,6 +10,11 @@ services:
       - ./code/:/var/www/code
     command: --default-authentication-plugin=mysql_native_password --sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - MYSQL_ROOT_PASSWORD=nosmoking
       - TZ=Asia/Shanghai
@@ -23,6 +28,11 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./code/:/var/www/code
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=nosmoking
@@ -41,6 +51,11 @@ services:
       && /usr/local/bin/redis-check-aof.sh
       && /usr/local/bin/redis-server /usr/local/etc/redis.conf"
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -50,6 +65,11 @@ services:
     build:
       context: ./phpredisadmin
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
       - ADMIN_USER=admin
@@ -65,6 +85,11 @@ services:
     build:
       context: ./beanstalkd
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -74,6 +99,11 @@ services:
     build:
       context: ./beanstalkd-console
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
       - AUTH=enable
@@ -89,6 +119,11 @@ services:
     build:
       context: ./gearmand
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -104,6 +139,11 @@ services:
       - ./conf/php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d
       - ./code/:/var/www/code
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
 
@@ -114,6 +154,11 @@ services:
       - ~/.ssh/:/root/.ssh
       - ./conf/php/php.ini:/usr/local/etc/php/php.ini
       - ./code/:/var/www/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
 
@@ -127,6 +172,11 @@ services:
       - ./logs/:/var/log/nginx
       - ./code/:/var/www/code
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -144,6 +194,11 @@ services:
       - ./code/:/var/www/code
     working_dir: /var/www/code
     entrypoint: ['composer']
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
 
@@ -152,6 +207,11 @@ services:
       context: ./node
     volumes:
       - ./code/:/var/www/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - TZ=Asia/Shanghai
 
