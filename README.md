@@ -201,3 +201,7 @@ cnpm [option] <command>
 yarn [command] [flags]
 exit
 ```
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
