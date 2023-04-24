@@ -24,7 +24,7 @@ docker-compose run --rm php-cli bash
 ```
 
 **提供的 Docker 容器服务：**
- - mysql 5.7.32
+ - mysql 8.0.31
   >- 端口：33060 -> 转发到 3306
   >- 用户名：root
   >- 密码：nosmoking

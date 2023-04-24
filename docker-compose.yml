@@ -3,12 +3,13 @@ version: '3'
 services:
 
   mysql:
+    image: jichangfeng/docker-compose-laravel:mysql
     build:
       context: ./mysql
     volumes:
       - mysql-data:/var/lib/mysql
       - ./code/:/var/www/code
-    command: --default-authentication-plugin=mysql_native_password --sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
     restart: always
     logging:
       driver: "json-file"
@@ -22,6 +23,7 @@ services:
       - "33060:3306"
 
   postgres:
+    image: jichangfeng/docker-compose-laravel:postgres
     build:
       context: ./postgres
     volumes:
@@ -41,6 +43,7 @@ services:
       - "54320:5432"
 
   redis:
+    image: jichangfeng/docker-compose-laravel:redis
     build:
       context: ./redis
     volumes:
@@ -62,6 +65,7 @@ services:
       - "63790:6379"
 
   phpredisadmin:
+    image: jichangfeng/docker-compose-laravel:phpredisadmin
     build:
       context: ./phpredisadmin
     restart: always
@@ -82,6 +86,7 @@ services:
       - redis
 
   beanstalkd:
+    image: jichangfeng/docker-compose-laravel:beanstalkd
     build:
       context: ./beanstalkd
     restart: always
@@ -96,6 +101,7 @@ services:
       - "11300:11300"
 
   beanstalkd-console:
+    image: jichangfeng/docker-compose-laravel:beanstalkd-console
     build:
       context: ./beanstalkd-console
     restart: always
@@ -116,6 +122,7 @@ services:
       - beanstalkd
 
   gearmand:
+    image: jichangfeng/docker-compose-laravel:gearmand
     build:
       context: ./gearmand
     restart: always
@@ -131,6 +138,7 @@ services:
     command: ["--queue-type=redis", "--redis-server=redis", "--redis-port=6379"]
 
   php-fpm:
+    image: jichangfeng/docker-compose-laravel:php-fpm
     build:
       context: ./php-fpm
     volumes:
@@ -148,6 +156,7 @@ services:
       - TZ=Asia/Shanghai
 
   php-cli:
+    image: jichangfeng/docker-compose-laravel:php-cli
     build:
       context: ./php-cli
     volumes:
@@ -163,6 +172,7 @@ services:
       - TZ=Asia/Shanghai
 
   nginx:
+    image: jichangfeng/docker-compose-laravel:nginx
     build:
       context: ./nginx
     volumes:
@@ -186,6 +196,7 @@ services:
       - php-fpm
 
   composer:
+    image: jichangfeng/docker-compose-laravel:php-cli
     build:
       context: ./php-cli
     volumes:
@@ -203,6 +214,7 @@ services:
       - TZ=Asia/Shanghai
 
   node:
+    image: jichangfeng/docker-compose-laravel:node
     build:
       context: ./node
     volumes:
