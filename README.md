@@ -3,6 +3,8 @@
 
 **常用的 Docker 操作命令：**
 ```
+# 拉取镜像
+docker-compose pull
 # 构建，启动项目中的 全部/部分 服务容器
 docker-compose up -d
 docker-compose up -d nginx php-fpm mysql redis
