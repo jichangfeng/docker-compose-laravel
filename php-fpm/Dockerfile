@@ -67,4 +67,6 @@ RUN apt-get update && \
     apt-get install -y pngquant --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* 
 
+RUN pecl install swoole-4.8.13 && docker-php-ext-enable swoole
+
 CMD ["php-fpm"]

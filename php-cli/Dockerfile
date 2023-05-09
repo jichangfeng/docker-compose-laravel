@@ -89,4 +89,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh && \
     ln -s /usr/local/bin/entrypoint.sh /
 ENTRYPOINT ["entrypoint.sh"]
 
+RUN pecl install swoole-4.8.13 && docker-php-ext-enable swoole
+
 CMD ["php"]
