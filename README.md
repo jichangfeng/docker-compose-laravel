@@ -48,8 +48,8 @@ docker-compose run --rm php-cli bash
   >- 密码：nosmoking
  - gearmand 1.1.19.1
   >- 端口：4730 -> 转发到 4730
- - php-fpm 7.3.23
- - php-cli 7.3.23
+ - php-fpm 7.4.33
+ - php-cli 7.4.33
  - nginx 1.18.0
   >- 端口：8000 -> 转发到 80
   >- 端口：44300 -> 转发到 443

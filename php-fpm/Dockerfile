@@ -1,37 +1,52 @@
-FROM php:7.3.23-fpm
+FROM php:7.4.33-fpm
 MAINTAINER Changfeng Ji <jichf@qq.com>
 
-COPY sources.list   /etc/apt/sources.list
-COPY buster.list   /etc/apt/sources.list.d/
 COPY bravo_0.4.0.tar.gz   /opt/bravo_0.4.0.tar.gz
 
-# Install modules
-RUN apt-get update && apt-get install -y \
-        wget \
-        git \
-        libxml2-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
-        libpq-dev \
-        libmcrypt-dev \
-    && docker-php-ext-install -j$(nproc) pdo_mysql \
-    && docker-php-ext-install -j$(nproc) pdo_pgsql \
-    && docker-php-ext-install -j$(nproc) bcmath \
-    && docker-php-ext-install -j$(nproc) intl \
-    && docker-php-ext-install -j$(nproc) soap \
-    && docker-php-ext-install -j$(nproc) sockets \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+RUN curl -sSLf \
+        -o /usr/local/bin/install-php-extensions \
+        https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
+    chmod +x /usr/local/bin/install-php-extensions
 
+RUN install-php-extensions amqp
+RUN install-php-extensions ast
+RUN install-php-extensions bcmath
+RUN install-php-extensions intl
+RUN install-php-extensions gd
+RUN install-php-extensions gearman
+RUN install-php-extensions event
+RUN install-php-extensions memcached
+RUN install-php-extensions msgpack
+RUN install-php-extensions mysqli
+RUN install-php-extensions mcrypt
+RUN install-php-extensions pcntl
+RUN install-php-extensions pdo_mysql
+RUN install-php-extensions pdo_pgsql
+RUN install-php-extensions pgsql
+RUN install-php-extensions redis
+RUN install-php-extensions soap
+RUN install-php-extensions sockets
+RUN install-php-extensions swoole
+RUN install-php-extensions SeasLog
+RUN install-php-extensions sysvmsg
+RUN install-php-extensions sysvsem
+RUN install-php-extensions sysvshm
+RUN install-php-extensions uuid
+RUN install-php-extensions xdebug
+RUN install-php-extensions xhprof
+RUN install-php-extensions yac
+RUN install-php-extensions yaf
+RUN install-php-extensions yar
+RUN install-php-extensions zlib
+RUN install-php-extensions zip
+RUN install-php-extensions zookeeper
+RUN install-php-extensions @composer
 
-RUN apt-get install -y libgearman-dev \
-    && pecl install gearman \
-    && docker-php-ext-enable gearman
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
+RUN apt-get update
 
-RUN pecl install xdebug
-
+RUN apt-get install -y git wget tree
 
 # bravo
 RUN mkdir -p /opt/bravo \
@@ -44,29 +59,5 @@ RUN mkdir -p /opt/bravo \
     && cd /opt \
     && rm -rf /opt/bravo \
     && docker-php-ext-enable bravo
-
-
-# deprecated
-RUN pecl install mcrypt-1.0.2 \
-    && docker-php-ext-enable mcrypt
-
-
-RUN pecl install redis \
-    && docker-php-ext-enable redis
-
-
-RUN apt-get install -y \
-        libzip-dev \
-        zip \
-  && docker-php-ext-configure zip --with-libzip \
-  && docker-php-ext-install zip
-
-
-# Install tools
-RUN apt-get update && \
-    apt-get install -y pngquant --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/* 
-
-RUN pecl install swoole-4.8.13 && docker-php-ext-enable swoole
 
 CMD ["php-fpm"]
