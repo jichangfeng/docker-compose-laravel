@@ -20,41 +20,45 @@ docker-compose ps
 docker-compose top
 # 进入项目中正在运行的服务容器
 docker-compose exec php-fpm bash
+docker-compose exec php-fpm-8 bash
 # 启动并进入项目中的服务容器，--rm 表示退出容器后自动删除容器
 docker-compose run --rm php-cli bash
+docker-compose run --rm php-cli-8 bash
 ......
 ```
 
 **提供的 Docker 容器服务：**
- - mysql 8.0.31
+ - `mysql` 8.0.31
   >- 端口：33060 -> 转发到 3306
   >- 用户名：root
   >- 密码：nosmoking
- - postgres 12.4
+ - `postgres` 12.4
   >- 端口：54320 -> 转发到 5432
   >- 用户名：postgres
   >- 密码：nosmoking
- - redis 5.0.9
+ - `redis` 5.0.9
   >- 端口：63790 -> 转发到 6379
- - phpredisadmin
+ - `phpredisadmin`
   >- 端口：6380 -> 转发到 6380
   >- 用户名：admin
   >- 密码：nosmoking
- - beanstalkd 1.10
+ - `beanstalkd` 1.10
   >- 端口：11300 -> 转发到 11300
- - beanstalkd-console
+ - `beanstalkd-console`
   >- 端口：2080 -> 转发到 2080
   >- 用户名：admin
   >- 密码：nosmoking
- - gearmand 1.1.19.1
+ - `gearmand` 1.1.19.1
   >- 端口：4730 -> 转发到 4730
- - php-fpm 7.4.33
- - php-cli 7.4.33
- - nginx 1.18.0
+ - `php-fpm` 7.4.33
+ - `php-fpm-8` 8.2
+ - `php-cli` 7.4.33
+ - `php-cli-8` 8.2
+ - `nginx` 1.18.0
   >- 端口：8000 -> 转发到 80
   >- 端口：44300 -> 转发到 443
- - composer latest-stable
- - node lts
+ - `composer` latest-stable
+ - `node` lts
 
 **使用 phpRedisAdmin 管理工具：**
  - 用PHP编写的用于管理Redis数据库的简单Web界面。
@@ -133,6 +137,7 @@ docker-compose run --rm composer create-project -d /var/www/code/laravel --prefe
 #     修改 blog.conf 文件内容“root "/var/www/code/default";” 为“root "/var/www/code/laravel/blog/public";”
 #     修改 blog.conf 文件内容“www.default.access.log";”为“www.blog.access.log”
 #     修改 blog.conf 文件内容“www.default.error.log";”为“www.blog.error.log”
+#     修改 blog.conf 文件内容......按需调整
 #     修改 hosts 增加“127.0.0.1 blog.www”（格式：Docker容器可访问IP 域名）
 #     重启 docker 后即可访问项目网址“http://blog.www:8000”
 ```

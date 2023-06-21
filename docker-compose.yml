@@ -155,10 +155,44 @@ services:
     environment:
       - TZ=Asia/Shanghai
 
+  php-fpm-8:
+    image: jichangfeng/docker-compose-laravel:php-fpm-8
+    build:
+      context: ./php-fpm-8
+    volumes:
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./conf/php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ./code/:/var/www/code
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
+
   php-cli:
     image: jichangfeng/docker-compose-laravel:php-cli
     build:
       context: ./php-cli
+    volumes:
+      - ~/.ssh/:/root/.ssh
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./code/:/var/www/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
+
+  php-cli-8:
+    image: jichangfeng/docker-compose-laravel:php-cli-8
+    build:
+      context: ./php-cli-8
     volumes:
       - ~/.ssh/:/root/.ssh
       - ./conf/php/php.ini:/usr/local/etc/php/php.ini
