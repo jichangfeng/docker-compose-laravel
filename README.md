@@ -1,4 +1,7 @@
 # docker-compose-laravel
+
+[![Security Status](https://www.murphysec.com/platform3/v31/badge/1674336661876269056.svg)](https://www.murphysec.com/console/report/1674336661792382976/1674336661876269056)
+
 用于 laravel 开发的 docker-compose 运行环境
 
 **常用的 Docker 操作命令：**
