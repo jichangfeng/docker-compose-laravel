@@ -9,7 +9,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./code/:/var/www/code
-    command: --default-authentication-plugin=mysql_native_password --sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION --skip-log-bin
     restart: always
     logging:
       driver: "json-file"
