@@ -8,16 +8,16 @@
 ```
 # 拉取 全部/部分 镜像
 docker-compose pull
-docker-compose pull nginx php-fpm mysql redis
+docker-compose pull nginx php-fpm php-fpm-8 mysql redis
 # 构建，启动项目中的 全部/部分 服务容器（建议先拉取镜像，这样会跳过构建过程）
 docker-compose up -d
-docker-compose up -d nginx php-fpm mysql redis
+docker-compose up -d nginx php-fpm php-fpm-8 mysql redis
 # 重启项目中的 全部/部分 服务容器
 docker-compose restart
-docker-compose restart nginx php-fpm mysql redis
+docker-compose restart nginx php-fpm php-fpm-8 mysql redis
 # 停止并移除项目中的 全部/部分 服务容器
 docker-compose rm -f -s
-docker-compose rm -f -s nginx php-fpm mysql redis
+docker-compose rm -f -s nginx php-fpm php-fpm-8 mysql redis
 # 列出项目中的服务容器
 docker-compose ps
 # 查看项目中的服务容器内运行的进程
