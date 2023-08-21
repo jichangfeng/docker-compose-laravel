@@ -37,8 +37,9 @@ RUN install-php-extensions @composer
 
 RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
-RUN apt-get update
-
-RUN apt-get install -y git wget tree
+RUN apt-get update \
+&& apt-get install -y git wget tree cups-client \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
 
 CMD ["php-fpm"]
