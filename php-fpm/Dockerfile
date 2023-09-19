@@ -46,7 +46,7 @@ RUN install-php-extensions @composer
 RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 RUN apt-get update \
-&& apt-get install -y git wget tree cups-client \
+&& apt-get install -y git wget tree cups-client smbclient \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
