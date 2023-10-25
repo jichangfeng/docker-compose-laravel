@@ -64,6 +64,21 @@ services:
     ports:
       - "63790:6379"
 
+  memcached:
+    image: jichangfeng/docker-compose-laravel:memcached
+    build:
+      context: ./memcached
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "11211:11211"
+
   phpredisadmin:
     image: jichangfeng/docker-compose-laravel:phpredisadmin
     build:
