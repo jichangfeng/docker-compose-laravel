@@ -12,6 +12,8 @@ RUN install-php-extensions intl
 RUN install-php-extensions gd
 RUN install-php-extensions imagick
 RUN install-php-extensions event
+RUN install-php-extensions memcache
+RUN install-php-extensions memcached
 RUN install-php-extensions msgpack
 RUN install-php-extensions mysql
 RUN install-php-extensions mssql
@@ -32,6 +34,7 @@ RUN install-php-extensions sysvshm
 RUN install-php-extensions uuid
 RUN install-php-extensions xdebug
 RUN install-php-extensions xhprof
+RUN install-php-extensions yar
 RUN install-php-extensions zlib
 RUN install-php-extensions zip
 RUN install-php-extensions zookeeper

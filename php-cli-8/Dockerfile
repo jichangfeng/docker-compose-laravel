@@ -13,6 +13,8 @@ RUN install-php-extensions intl
 RUN install-php-extensions gd
 RUN install-php-extensions imagick
 RUN install-php-extensions event
+RUN install-php-extensions memcache
+RUN install-php-extensions memcached
 RUN install-php-extensions msgpack
 RUN install-php-extensions mysqli
 RUN install-php-extensions mcrypt
