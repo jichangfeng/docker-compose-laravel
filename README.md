@@ -8,25 +8,27 @@
 ```
 # 拉取 全部/部分 镜像
 docker-compose pull
-docker-compose pull nginx php-fpm php-fpm-8 mysql redis
+docker-compose pull nginx php-fpm php-fpm-5 php-fpm-8 mysql redis
 # 构建，启动项目中的 全部/部分 服务容器（建议先拉取镜像，这样会跳过构建过程）
 docker-compose up -d
-docker-compose up -d nginx php-fpm php-fpm-8 mysql redis
+docker-compose up -d nginx php-fpm php-fpm-5 php-fpm-8 mysql redis
 # 重启项目中的 全部/部分 服务容器
 docker-compose restart
-docker-compose restart nginx php-fpm php-fpm-8 mysql redis
+docker-compose restart nginx php-fpm php-fpm-5 php-fpm-8 mysql redis
 # 停止并移除项目中的 全部/部分 服务容器
 docker-compose rm -f -s
-docker-compose rm -f -s nginx php-fpm php-fpm-8 mysql redis
+docker-compose rm -f -s nginx php-fpm php-fpm-5 php-fpm-8 mysql redis
 # 列出项目中的服务容器
 docker-compose ps
 # 查看项目中的服务容器内运行的进程
 docker-compose top
 # 进入项目中正在运行的服务容器
 docker-compose exec php-fpm bash
+docker-compose exec php-fpm-5 bash
 docker-compose exec php-fpm-8 bash
 # 启动并进入项目中的服务容器，--rm 表示退出容器后自动删除容器
 docker-compose run --rm php-cli bash
+docker-compose run --rm php-cli-5 bash
 docker-compose run --rm php-cli-8 bash
 ......
 ```
@@ -55,8 +57,10 @@ docker-compose run --rm php-cli-8 bash
  - `gearmand` 1.1.19.1
   >- 端口：4730 -> 转发到 4730
  - `php-fpm` 7.4.33
+ - `php-fpm-5` 5.6.40
  - `php-fpm-8` 8.2
  - `php-cli` 7.4.33
+ - `php-cli-5` 5.6.40
  - `php-cli-8` 8.2
  - `nginx` 1.18.0
   >- 端口：8000 -> 转发到 80

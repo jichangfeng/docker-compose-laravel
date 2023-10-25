@@ -155,6 +155,24 @@ services:
     environment:
       - TZ=Asia/Shanghai
 
+  php-fpm-5:
+    image: jichangfeng/docker-compose-laravel:php-fpm-5
+    build:
+      context: ./php-fpm-5
+    volumes:
+      - ./conf/php-5/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/php-fpm-5/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./conf/php-fpm-5/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ./code/:/var/www/code
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
+
   php-fpm-8:
     image: jichangfeng/docker-compose-laravel:php-fpm-8
     build:
@@ -180,6 +198,22 @@ services:
     volumes:
       - ~/.ssh/:/root/.ssh
       - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./code/:/var/www/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - TZ=Asia/Shanghai
+
+  php-cli-5:
+    image: jichangfeng/docker-compose-laravel:php-cli-5
+    build:
+      context: ./php-cli-5
+    volumes:
+      - ~/.ssh/:/root/.ssh
+      - ./conf/php-5/php.ini:/usr/local/etc/php/php.ini
       - ./code/:/var/www/code
     logging:
       driver: "json-file"
@@ -228,6 +262,8 @@ services:
       - "44300:443"
     depends_on:
       - php-fpm
+      - php-fpm-5
+      - php-fpm-8
 
   composer:
     image: jichangfeng/docker-compose-laravel:php-cli

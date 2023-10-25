@@ -3,6 +3,8 @@ logs/*.log
 code/*
 !code/default/index.html
 !code/default/index.php
+!code/default/php5/index.html
+!code/default/php5/index.php
 !code/default/php8/index.html
 !code/default/php8/index.php
 !code/laravel/index.html
