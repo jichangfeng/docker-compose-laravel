@@ -97,6 +97,12 @@ docker-compose run --rm php-cli-8 bash
  - 修改 hosts 增加 `127.0.0.1 default.www`（格式：`Docker容器可访问IP 域名`）
  - 访问地址：`http://default.www:8000/memcache.php`
  - 访问用户名、密码：`admin nosmoking`
+ - 添加memcached数据库：
+```
+ # 修改 code/default/memcache.php 文件，在 MEMCACHE_SERVERS 数组里追加，示例如下：
+    $MEMCACHE_SERVERS[] = 'memcached:11211'; // add more as an array
+    $MEMCACHE_SERVERS[] = 'beta.memcached.com:11211';
+```
 
 **使用 beanstalkd-console 管理工具：**
  - 用PHP编写的Beanstalk队列服务器的管理控制台。
