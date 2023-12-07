@@ -38,6 +38,7 @@ RUN install-php-extensions yar
 RUN install-php-extensions zlib
 RUN install-php-extensions zip
 RUN install-php-extensions zookeeper
+RUN install-php-extensions mongodb
 RUN install-php-extensions @composer
 
 RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
