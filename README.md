@@ -42,6 +42,10 @@ docker-compose run --rm php-cli-8 bash
   >- 端口：54320 -> 转发到 5432
   >- 用户名：postgres
   >- 密码：nosmoking
+ - `mongo` 7.0.4
+  >- 端口：27017 -> 转发到 27017
+  >- 用户名：root
+  >- 密码：nosmoking
  - `redis` 5.0.9
   >- 端口：63790 -> 转发到 6379
  - `memcached` 1.6.22-alpine

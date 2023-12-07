@@ -42,6 +42,26 @@ services:
     ports:
       - "54320:5432"
 
+  mongo:
+    image: jichangfeng/docker-compose-laravel:mongo
+    build:
+      context: ./mongo
+    volumes:
+      - mongo-data:/data/db
+      - ./code/:/var/www/code
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=nosmoking
+      - TZ=Asia/Shanghai
+    ports:
+      - "27017:27017"
+
   redis:
     image: jichangfeng/docker-compose-laravel:redis
     build:
@@ -315,4 +335,5 @@ services:
 volumes:
   mysql-data: 
   postgres-data: 
+  mongo-data: 
   redis-data: 
