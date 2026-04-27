@@ -6,7 +6,7 @@
 
 **常用的 Docker 操作命令：**
 ```
-# 拉取 全部/部分 镜像
+# 拉取 全部/部分 镜像（支持 linux/amd64、linux/arm64/v8 双架构镜像）
 docker-compose pull
 docker-compose pull nginx php-fpm php-fpm-5 php-fpm-8
 # 构建，启动项目中的 全部/部分 服务容器（建议先拉取镜像，这样会跳过构建过程）
